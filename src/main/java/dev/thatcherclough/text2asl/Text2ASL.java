@@ -27,25 +27,26 @@ public class Text2ASL {
 	 */
 	public static void main(String[] args) {
 		try {
-			frame = new Translator("Text2ASL");
-			String sentence = frame.getInput("Enter sentence to be translated into ASL:", 30);
+			//frame = new Translator("Text2ASL");
+			String sentence = args[0];
 
-			frame.initiateProgressPanel();
+			//frame.initiateProgressPanel();
 
-			frame.addToProgressPanel("Converting to ASL grammar...", 20, 0);
+			//frame.addToProgressPanel("Converting to ASL grammar...", 20, 0);
 			ASLConversionService alsConversionService = new ASLConversionService();
 			ASLResponse result = alsConversionService.getASLSentence(sentence);
-			frame.addToProgressPanel("Done.", 405, 0);
+			System.out.println(result.getSentence());
+			//frame.addToProgressPanel("Done.", 405, 0);
 
-			frame.addToProgressPanel("Getting video URLs...", 20, 35);
-			ArrayList<String> URLs = Grabber.getVideoURLsFromSentence(result.getSentence());
-			frame.addToProgressPanel("Done.", 405, 35);
+			//frame.addToProgressPanel("Getting video URLs...", 20, 35);
+			//ArrayList<String> URLs = Grabber.getVideoURLsFromSentence(result.getSentence());
+			//frame.addToProgressPanel("Done.", 405, 35);
 
-			frame.addToProgressPanel("Downloading videos...", 20, 70);
-			String[] videos = downloadVideosAndCreateVideoSequence(URLs);
-			frame.addToProgressPanel("Done.", 405, 70);
+			//frame.addToProgressPanel("Downloading videos...", 20, 70);
+			//String[] videos = downloadVideosAndCreateVideoSequence(URLs);
+			//frame.addToProgressPanel("Done.", 405, 70);
 
-			frame.playVideos(videos);
+			//frame.playVideos(videos);
 		} catch (Exception e) {
 			error(e);
 		}
